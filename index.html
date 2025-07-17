@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITIL 4 Foundation Study Guide - ADHD Friendly</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .toc {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(240, 147, 251, 0.3);
+        }
+        
+        .toc h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .toc-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .toc-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .foundation { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .dimensions { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .svs { background: linear-gradient(135deg, #a8caba 0%, #5d4e75 100%); color: white; }
+        .principles { background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); }
+        .value-chain { background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%); }
+        .improvement { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .practices { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .additional { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .tips { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h3 {
+            font-size: 1.5em;
+            margin: 20px 0 10px 0;
+            color: #333;
+            border-left: 5px solid;
+            padding-left: 15px;
+        }
+        
+        .foundation h3 { border-color: #ff6b6b; }
+        .dimensions h3 { border-color: #4ecdc4; }
+        .svs h3 { border-color: #45b7d1; }
+        .principles h3 { border-color: #96ceb4; }
+        .value-chain h3 { border-color: #ffeaa7; }
+        .improvement h3 { border-color: #fd79a8; }
+        .practices h3 { border-color: #6c5ce7; }
+        .additional h3 { border-color: #a29bfe; }
+        .tips h3 { border-color: #fd79a8; }
+        
+        .key-term {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .key-term strong {
+            color: #2d3436;
+            font-size: 1.1em;
+        }
+        
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 3px solid;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .formula { border-color: #e17055; background: #fff5f5; }
+        .vipp { border-color: #00b894; background: #f1fffe; }
+        .memory-aid { border-color: #6c5ce7; background: #f8f7ff; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card1 { border-color: #ff7675; }
+        .card2 { border-color: #74b9ff; }
+        .card3 { border-color: #55a3ff; }
+        .card4 { border-color: #00b894; }
+        .card5 { border-color: #fdcb6e; }
+        .card6 { border-color: #e17055; }
+        .card7 { border-color: #a29bfe; }
+        
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .step-list li {
+            counter-increment: step-counter;
+            margin: 15px 0;
+            padding: 15px 20px 15px 60px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .important {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .focus-timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .timer-display {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .timer-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .timer-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        .timer-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .focus-timer {
+                position: static;
+                margin: 20px auto;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 ITIL 4 Foundation Study Guide</h1>
+            <p>ADHD-Friendly | Visual | Interactive</p>
+        </div>
+        
+        <div class="focus-timer">
+            <div class="timer-display" id="timer">25:00</div>
+            <div class="timer-buttons">
+                <button class="timer-btn" onclick="startTimer()">Start</button>
+                <button class="timer-btn" onclick="resetTimer()">Reset</button>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            
+            <div class="toc">
+                <h2>📚 Quick Navigation</h2>
+                <div class="toc-grid">
+                    <div class="toc-item" onclick="scrollToSection('foundation')">🔑 Key Concepts</div>
+                    <div class="toc-item" onclick="scrollToSection('dimensions')">🌐 Four Dimensions</div>
+                    <div class="toc-item" onclick="scrollToSection('svs')">⚙️ Service Value System</div>
+                    <div class="toc-item" onclick="scrollToSection('principles')">📋 Guiding Principles</div>
+                    <div class="toc-item" onclick="scrollToSection('value-chain')">🔗 Value Chain</div>
+                    <div class="toc-item" onclick="scrollToSection('improvement')">📈 Continual Improvement</div>
+                    <div class="toc-item" onclick="scrollToSection('practices')">🛠️ Key Practices</div>
+                    <div class="toc-item" onclick="scrollToSection('tips')">💡 Exam Tips</div>
+                </div>
+            </div>
+
+            <section id="foundation" class="section foundation">
+                <h2>🔑 Foundational Concepts</h2>
+                
+                <h3>Essential Terms You MUST Know</h3>
+                
+                <div class="key-term">
+                    <strong>Service Management:</strong> A set of organizational capabilities for enabling value to customers in the form of services.
+                </div>
+                
+                <div class="key-term">
+                    <strong>Value:</strong> Perceived benefits, usefulness, and importance of something to customers.
+                </div>
+                
+                <div class="key-term">
+                    <strong>Service:</strong> Value co-creation by creating outcomes for customers they want to achieve without managing specific costs and risks.
+                </div>
+                
+                <div class="key-term">
+                    <strong>Customer:</strong> Person who defines requirements for service.
+                </div>
+                
+                <div class="key-term">
+                    <strong>Utility:</strong> Fit for purpose - service does what it's meant to do.
+                </div>
+                
+                <div class="key-term">
+                    <strong>Warranty:</strong> Fit for use - service does this good enough (availability, capacity, continuity, security).
+                </div>
+                
+                <div class="highlight-box formula">
+                    <h3>🧮 THE VALUE FORMULA</h3>
+                    <div style="font-size: 1.5em; text-align: center; font-weight: bold; color: #e17055;">
+                        Value = Utility + Warranty (+ Perception)
+                    </div>
+                </div>
+            </section>
+
+            <section id="dimensions" class="section dimensions">
+                <h2>🌐 Four Dimensions of Service Management</h2>
+                
+                <div class="highlight-box vipp">
+                    <h3>📝 Remember: VIPP Framework</h3>
+                    <p><strong>All four dimensions work together to create value!</strong></p>
+                </div>
+                
+                <div class="grid">
+                    <div class="card card1">
+                        <h3>🔄 Value Streams & Processes</h3>
+                        <ul>
+                            <li>Activates organizational understanding</li>
+                            <li>Organizational activity</li>
+                            <li>Exercise value stream mapping</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card card2">
+                        <h3>👥 Organizations & People</h3>
+                        <ul>
+                            <li>Organizational structures</li>
+                            <li>Decision making habits</li>
+                            <li>Staffing and skill requirements</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card card3">
+                        <h3>💻 Information & Technology</h3>
+                        <ul>
+                            <li>Info and tools needed</li>
+                            <li>Tech and innovation</li>
+                            <li>Relationship between components</li>
+                            <li>Culture of knowledge management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card card4">
+                        <h3>🤝 Partners & Suppliers</h3>
+                        <ul>
+                            <li>Relationship with external vendors</li>
+                            <li>Factors that influence suppliers' strategy</li>
+                            <li>Service integration management</li>
+                            <li>Vendor selection procedures</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box memory-aid">
+                    <h3>🌍 External Factors: PESTLE</h3>
+                    <p><strong>P</strong>olitical, <strong>E</strong>conomical, <strong>S</strong>ocial, <strong>T</strong>echnological, <strong>L</strong>egal, <strong>E</strong>nvironmental</p>
+                </div>
+            </section>
+
+            <section id="svs" class="section svs">
+                <h2>⚙️ Service Value System (SVS)</h2>
+                
+                <div class="important">
+                    SVS = All moving parts working together to create value for customers
+                </div>
+                
+                <h3>🏗️ Five Components</h3>
+                <ol class="step-list">
+                    <li><strong>Guiding Principles</strong></li>
+                    <li><strong>Governance</strong></li>
+                    <li><strong>Service Value Chain</strong></li>
+                    <li><strong>Practices</strong></li>
+                    <li><strong>Continual Improvement</strong></li>
+                </ol>
+            </section>
+
+            <section id="principles" class="section principles">
+                <h2>📋 The 7 Guiding Principles</h2>
+                
+                <div class="important">
+                    These guide organizations in ANY circumstances - even for implementing ITIL 4!
+                </div>
+                
+                <div class="grid">
+                    <div class="card card1">
+                        <h3>🎯 Focus on Value</h3>
+                        <p>Everything in the organization should be useful</p>
+                    </div>
+                    
+                    <div class="card card2">
+                        <h3>🏁 Start Where You Are</h3>
+                        <p>Try to reuse existing resources instead of reinventing the wheel</p>
+                    </div>
+                    
+                    <div class="card card3">
+                        <h3>🔄 Progress Iteratively with Feedback</h3>
+                        <p>Don't do everything at once, take baby steps</p>
+                    </div>
+                    
+                    <div class="card card4">
+                        <h3>👁️ Collaborate & Promote Visibility</h3>
+                        <p>Involve the right people at the right time and gather factual data</p>
+                    </div>
+                    
+                    <div class="card card5">
+                        <h3>🌐 Think and Work Holistically</h3>
+                        <p>Nothing ever alone, think about the effect of your actions</p>
+                    </div>
+                    
+                    <div class="card card6">
+                        <h3>✨ Keep it Simple and Practical</h3>
+                        <p>Don't overcomplicate</p>
+                    </div>
+                    
+                    <div class="card card7">
+                        <h3>🤖 Optimize and Automate</h3>
+                        <p>Maximize the value of human work</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="value-chain" class="section value-chain">
+                <h2>🔗 Service Value Chain</h2>
+                
+                <div class="important">
+                    Turns demand into value through products & services
+                </div>
+                
+                <h3>🔄 Six Activities (In Order)</h3>
+                <ol class="step-list">
+                    <li><strong>Plan</strong> - Make sure everyone understands direction, policy & plans</li>
+                    <li><strong>Improve</strong> - Continuously improve all services, practices & activities</li>
+                    <li><strong>Engage</strong> - With customers/users/partners to understand needs</li>
+                    <li><strong>Design & Transition</strong> - Design new or changed services and move to production</li>
+                    <li><strong>Obtain/Build</strong> - Get or build the needed service components</li>
+                    <li><strong>Deliver & Support</strong> - Operate & support live services for users</li>
+                </ol>
+                
+                <div class="highlight-box memory-aid">
+                    <h3>💡 Remember</h3>
+                    <p><strong>A Value Stream is a custom way of implementing an SVS</strong></p>
+                </div>
+            </section>
+
+            <section id="improvement" class="section improvement">
+                <h2>📈 Continual Improvement</h2>
+                
+                <div class="important">
+                    Happens EVERYWHERE - Everyone's responsibility!
+                </div>
+                
+                <h3>🎯 Key Points</h3>
+                <div class="grid">
+                    <div class="card card1">
+                        <h3>💡 Ideas Need Refinement</h3>
+                        <p>Raw ideas must be developed and improved</p>
+                    </div>
+                    
+                    <div class="card card2">
+                        <h3>👥 Everyone's Responsibility</h3>
+                        <p>Not just management - all team members contribute</p>
+                    </div>
+                    
+                    <div class="card card3">
+                        <h3>🌐 All 4 Dimensions</h3>
+                        <p>Must consider all dimensions during any improvement</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="practices" class="section practices">
+                <h2>🛠️ Key Management Practices</h2>
+                
+                <h3>🔄 Change Management</h3>
+                <div class="highlight-box">
+                    <p><strong>Purpose:</strong> Maximize # of successful changes through proper risk assessment and minimize negative impact of failed changes</p>
+                    
+                    <h4>Types:</h4>
+                    <ul>
+                        <li><strong>Standard:</strong> Pre-authorized, low risk, low cost</li>
+                        <li><strong>Normal:</strong> Authorization depends on what calendar changes</li>
+                        <li><strong>Emergency:</strong> Needs rapid action, key business separate changes</li>
+                    </ul>
+                </div>
+                
+                <h3>🚨 Incident Management</h3>
+                <div class="highlight-box">
+                    <p><strong>Purpose:</strong> Minimize negative impact of incidents by restoring normal operation ASAP</p>
+                    <p><strong>Incident:</strong> Unplanned interruption or reduction of quality</p>
+                    <p><strong>Swarming:</strong> May help with complex issues</p>
+                </div>
+                
+                <h3>🔍 Problem Management</h3>
+                <div class="highlight-box">
+                    <p><strong>Purpose:</strong> Reduce likelihood of recurring incidents by identifying root causes</p>
+                    <ul>
+                        <li><strong>Problem:</strong> Unknown cause of one or more incidents</li>
+                        <li><strong>Known Error:</strong> Problem with known root cause but no solution yet</li>
+                        <li><strong>Workaround:</strong> Alternate solution, reducing impact</li>
+                    </ul>
+                </div>
+                
+                <h3>🎧 Service Desk</h3>
+                <div class="highlight-box">
+                    <p><strong>Purpose:</strong> Capture demand for incidents & service requests. Single point of contact</p>
+                    <p><strong>Skills:</strong> Incident analysis, prioritization, effective communication</p>
+                </div>
+                
+                <h3>📊 Service Level Management</h3>
+                <div class="highlight-box">
+                    <p><strong>Purpose:</strong> Set clear business-based targets for service performance</p>
+                    <ul>
+                        <li><strong>SLA:</strong> Agreement between customer & Service Provider</li>
+                        <li><strong>OLA:</strong> Agreement between different units of same organization</li>
+                        <li><strong>UC:</strong> Agreement between Service Provider and external Supplier</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="tips" class="section tips">
+                <h2>💡 ADHD-Friendly Exam Tips</h2>
+                
+                <div class="grid">
+                    <div class="card card1">
+                        <h3>🎯 Focus Areas</h3>
+                        <ul>
+                            <li>7 Guiding Principles (memorize these!)</li>
+                            <li>4 Dimensions (VIPP)</li>
+                            <li>6 Value Chain activities</li>
+                            <li>SVS components</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card card2">
+                        <h3>🧠 Memory Tricks</h3>
+                        <ul>
+                            <li><strong>VIPP:</strong> Value, Information, Partners, People</li>
+                            <li><strong>PESTLE:</strong> Political, Economic, Social, Tech, Legal, Environmental</li>
+                            <li><strong>Value = Utility + Warranty</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card card3">
+                        <h3>⚡ Quick Differences</h3>
+                        <ul>
+                            <li><strong>Incident:</strong> Unplanned interruption</li>
+                            <li><strong>Problem:</strong> Unknown cause of incidents</li>
+                            <li><strong>Change:</strong> Planned modification</li>
+                            <li><strong>Service Request:</strong> Formal request (not incident)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card card4">
+                        <h3>📝 Study Strategy</h3>
+                        <ul>
+                            <li>Use 25-minute focus sessions</li>
+                            <li>Review one section at a time</li>
+                            <li>Create mental maps of connections</li>
+                            <li>Practice with real scenarios</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="important">
+                    ITIL 4 emphasizes VALUE CO-CREATION, FLEXIBILITY, and INTEGRATION!<br>
+                    Focus on how components work together, not rigid processes.
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        let timer;
+        let timeLeft = 25 * 60; // 25 minutes in seconds
+        let isRunning = false;
+
+        function updateDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                timer = setInterval(() => {
+                    timeLeft--;
+                    updateDisplay();
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        isRunning = false;
+                        alert('🎉 Focus session complete! Take a 5-minute break.');
+                        resetTimer();
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            isRunning = false;
+            timeLeft = 25 * 60;
+            updateDisplay();
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Progress tracking
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress').style.width = scrolled + '%';
+        });
+
+        // Initialize timer display
+        updateDisplay();
+    </script>
+</body>
+</html>
