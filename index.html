@@ -210,7 +210,7 @@
             padding: 0;
         }
         
-        .step-list li {
+/*         .step-list li {
             counter-increment: step-counter;
             margin: 15px 0;
             padding: 15px 20px 15px 60px;
@@ -218,7 +218,18 @@
             border-radius: 10px;
             position: relative;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+        } */
+        .step-list li {
+    counter-increment: step-counter;
+    margin: 15px 0;
+    padding: 15px 20px 15px 60px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #2d3436;
+    font-weight: 500;
+    }
         
         .step-list li::before {
             content: counter(step-counter);
